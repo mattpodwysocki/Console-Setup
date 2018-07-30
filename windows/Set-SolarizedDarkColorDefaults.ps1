@@ -16,6 +16,7 @@ $Host.PrivateData.ProgressBackgroundColor = 'Cyan'
 if (Get-Module -ListAvailable -Name "PSReadline") {
     $options = Get-PSReadlineOption
 
+    $options.CommentColor = 'DarkGreen'
     $options.CommandColor = 'Yellow'
     $options.ContinuationPromptColor = 'DarkBlue'
     $options.DefaultTokenColor = 'DarkBlue'

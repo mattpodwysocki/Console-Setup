@@ -94,12 +94,12 @@ Set-Alias pgrep Get-Process
 
 # kill process
 function pkill($name) {
-	get-process $name -ErrorAction SilentlyContinue | stop-process
+	Get-Process $name -ErrorAction SilentlyContinue | Stop-Process
 }
 
 # sed
 function sed($file, $find, $replace){
-	(Get-Content $file).Replace("$find", $replace) | Set-Content $file
+	(Get-Content $file) -Replace "$find", $replace | Set-Content $file
 }
 
 #which
