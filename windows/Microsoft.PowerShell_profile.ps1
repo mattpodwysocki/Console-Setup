@@ -35,13 +35,17 @@ Set-Alias ep Edit-Profile
 function Update-Profile { & $PROFILE }
 Set-Alias up Update-Profile
 
-function Open-Explorer($path = ".") { explorer.exe $path }
+function Open-Explorer($path = $pwd) { explorer.exe $path }
 Set-Alias explorer Open-Explorer
 
 function Set-EnvironmentVariable($name, $value) {
 	Set-Item -Force -Path "env:$name" -Value $value;
 }
 Set-Alias export Set-EnvironmentVariable
+
+# PowerShell overrides
+Set-Alias -Name curl -Value curl.exe -Option AllScope
+Set-Alias -Name wget -Value wget.exe -Option AllScope
 
 # Unix Utilities
 Function New-File($file) {
@@ -75,31 +79,12 @@ function fuser($relativeFile){
 	}
 }
 
-# grep
-function grep($regex, $dir) {
-	if ($null -ne $dir) {
-		Get-ChildItem $dir | Select-String $regex
-		return
-	}
-	$input | Select-String $regex
-}
-
-# Inverse grep
-function grepv($regex) {
-    $input | Where-Object { !$_.Contains($regex) }
-}
-
 # pgrep
 Set-Alias pgrep Get-Process
 
 # kill process
 function pkill($name) {
 	Get-Process $name -ErrorAction SilentlyContinue | Stop-Process
-}
-
-# sed
-function sed($file, $find, $replace){
-	(Get-Content $file) -Replace "$find", $replace | Set-Content $file
 }
 
 #which
