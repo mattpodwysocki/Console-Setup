@@ -2,7 +2,10 @@ $env:PYTHONIOENCODING="utf-8"
 $PSDefaultParameterValues["Out-File:Encoding"]="utf8"
 
 # Solarized Dark
-. (Join-Path -Path (Split-Path -Parent -Path $PROFILE) -ChildPath $(switch($HOST.UI.RawUI.BackgroundColor.ToString()){"White"{"Set-SolarizedLightColorDefaults.ps1"}"Black"{"Set-SolarizedDarkColorDefaults.ps1"}default{return}}))
+$solarizedDark = Join-Path (Split-Path -Parent -Path $PROFILE) "Set-SolarizedDarkColorDefaults.ps1"
+if (Test-Path $solarizedDark) {
+	. $solarizedDark
+}
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
@@ -48,36 +51,10 @@ Set-Alias -Name curl -Value curl.exe -Option AllScope
 Set-Alias -Name wget -Value wget.exe -Option AllScope
 
 # Unix Utilities
-Function New-File($file) {
-    if ($null -eq $file) {
-        throw "No filename supplied"
-    }
-
-    if (Test-Path $file)  {
-        (Get-ChildItem $file).LastWriteTime = Get-Date
-    } else {
-        Write-Output $null > $file
-    }
-}
-Set-Alias touch New-File
-
 function New-Link ($target, $link) {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 Set-Alias ln New-Link
-
-# fuser
-function fuser($relativeFile){
-	$file = Resolve-Path $relativeFile
-	Write-Output "Looking for processes using $file"
-	foreach ($process in (Get-Process)) {
-		foreach ($module in $Process.Modules) {
-			if ($module.FileName -Like "$file*" ) {
-				$process | Select-Object Id, Path
-			}
-		}
-	}
-}
 
 # pgrep
 Set-Alias pgrep Get-Process
@@ -116,8 +93,15 @@ Import-Module -Name posh-git
 Import-Module -Name oh-my-posh
 
 # Default the prompt to agnoster oh-my-posh theme
-Set-Theme Agnoster
+Set-Theme Paradox
 
 # Install thefuck
 $env:TF_SHELL = "powershell"
 Invoke-Expression "$(thefuck --alias)"
+
+# Install AzureRM
+if ($PSVersionTable.PSEdition -eq "Core") {
+    Import-Module AzureRm.Netcore
+} else {
+    Import-Module AzureRm
+}

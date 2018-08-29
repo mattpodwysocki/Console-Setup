@@ -7,26 +7,32 @@ As a developer, I started my career in *nix systems and have been very heavily c
 An essential to a productive development environment is a package manager. Just as macOS has Homebrew, Windows has [Chocolatey](https://chocolatey.org/) and [Scoop](https://github.com/lukesampson/scoop) which allows us to be productive within minutes of installation.  Below are some of my choices per category.
 
 ### Languages
-- [dotnetcore-sdk](https://chocolatey.org/packages/dotnetcore-sdk)
-- [go](https://chocolatey.org/packages/go)
-- [nodejs](https://chocolatey.org/packages/nodejs)
-- [python2](https://chocolatey.org/packages/python2)
-- [python3](https://chocolatey.org/packages/python3)
-- [ruby](https://chocolatey.org/packages/ruby)
-- [zulu (OpenJDK)](https://chocolatey.org/packages/zulu)
+- dotnetcore-sdk
+- go
+- nodejs
+- python2
+- python3
+- ruby
+- zulu (OpenJDK)
 
 ### Version Control
-- [git](https://chocolatey.org/packages/git)
-- [git-lfs](https://chocolatey.org/packages/git-lfs)
-- [p4merge](https://chocolatey.org/packages/P4Merge)
+- git
+- git-lfs
+- p4merge
 
 ### System Utilities
 - coreutils
 - cURL
+- fd
 - fzf
+- gawk
 - grep
 - jq
+- openssl
+- openssh
+- ripgrep
 - sed
+- sudo
 - touch
 - wget
 - which
@@ -45,15 +51,21 @@ C:\Tools\ColorTool> ColorTool.exe -b solarized_dark
 
 I prefer Powerline fonts for the console, in particular Menlo for Powerline, so that I get a decent experience.  To set this, go to the properties window of the console, go to font and select Menlo for Powerline.
 
+### Cmder Configuration
+
+The [Cmder](https://github.com/cmderdev/cmder) is a nice wrapper around [ConEmu](https://conemu.github.io/) and [Clink](https://github.com/mridgers/clink).  For my customization, I usually get rid of most of the profiles, sticking with the plain cmder profile and that's it.  Once again for the color scheme, I use Solarized which can be set via Settings => Features => Colors => Schemes.  I also change the default font from Consolas to "Menlo for Powerline" with a backup to "Source Code Pro for Powerline" via Settings => Main.
+
 ### Hyper Configuration
 
-The [Hyper terminal](https://hyper.is/) is a great cross-platform terminal, built on Electron and web technologies.  Best of all, it is easily extensible.  The [Awesome Hyper](https://github.com/bnb/awesome-hyper) repository has a lot of customizations that you can do that allow you to work the way you want to.
+The [Hyper terminal](https://hyper.is/) is a great cross-platform terminal, built on Electron and web technologies.  Best of all, it is easily extensible.  The [Awesome Hyper](https://github.com/bnb/awesome-hyper) repository has a lot of customizations that you can do that allow you to work the way you want to.  
 
 For example, I use the following plugins:
 - [`hyper-solarized-dark`](https://www.npmjs.com/package/hyper-solarized-dark) - Solarized Dark Theme
 - [`hyperlinks`](https://www.npmjs.com/package/hyperlinks) - Enable hyperlinks
 - [`hyper-tabs-enhanced`](https://www.npmjs.com/package/hyper-tabs-enhanced) - Better Tabbed experience
 - [`hyper-transparent-dynamic`](https://www.npmjs.com/package/hyper-transparent-dynamic) - Change the opacity
+
+My hyper configuration can be found at [`.hyper.js`](.hyper.js)
 
 ## PowerShell Configuration
 
