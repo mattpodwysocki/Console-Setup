@@ -2,6 +2,13 @@
 
 As a developer, I started my career in *nix systems and have been very heavily console based for a lot of my activity. This is my basic setup for Windows as a development environment.
 
+## Developer Mode
+
+In order to squeeze the most performance out of a Windows development machine is to play a little unsafe.  That is to disable the Windows Search service, but also the Windows Defender service.  I have two PowerShell scripts that enable this development mode, and one that reverts it that must be run in Administrator mode.
+
+- [`Enable-DeveloperMode.ps1`](EnableDeveloperMode.ps1) - Disables Defender and Windows Search
+- [`Disable-DeveloperMode.ps1`](DisableDeveloperMode.ps1) - Enables Defender and Windows Search
+
 ## Development Essentials
 
 An essential to a productive development environment is a package manager. Just as macOS has Homebrew, Windows has [Chocolatey](https://chocolatey.org/) and [Scoop](https://github.com/lukesampson/scoop) which allows us to be productive within minutes of installation.  Below are some of my choices per category.
@@ -20,7 +27,7 @@ An essential to a productive development environment is a package manager. Just 
 - git-lfs
 - p4merge
 
-### System Utilities
+### System Utilities installed via Scoop Globally
 - coreutils
 - cURL
 - fd
