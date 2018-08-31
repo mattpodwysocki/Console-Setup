@@ -6,8 +6,8 @@ As a developer, I started my career in *nix systems and have been very heavily c
 
 In order to squeeze the most performance out of a Windows development machine is to play a little unsafe.  That is to disable the Windows Search service, but also the Windows Defender service.  I have two PowerShell scripts that enable this development mode, and one that reverts it that must be run in Administrator mode.
 
-- [`Enable-DeveloperMode.ps1`](EnableDeveloperMode.ps1) - Disables Defender and Windows Search
-- [`Disable-DeveloperMode.ps1`](DisableDeveloperMode.ps1) - Enables Defender and Windows Search
+- [`Enable-DeveloperMode.ps1`](https://github.com/mattpodwysocki/Console-Setup/blob/master/windows/Enable-DeveloperMode.ps1) - Disables Defender and Windows Search
+- [`Disable-DeveloperMode.ps1`](https://github.com/mattpodwysocki/Console-Setup/blob/master/windows/Disable-DeveloperMode.ps1) - Enables Defender and Windows Search
 
 ## Development Essentials
 
