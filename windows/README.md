@@ -28,6 +28,7 @@ An essential to a productive development environment is a package manager. Just 
 - p4merge
 
 ### System Utilities installed via Scoop Globally
+- bat
 - coreutils
 - cURL
 - fd
@@ -82,11 +83,12 @@ By default, I install a number of modules from the PowerShell Gallery including:
 - `Get-ChildItemColor` - A colorized version of `Get-ChildItem` cmdlet
 - `oh-my-posh` - Theming capabilities for the console
 - `posh-git` - Provides git status and git tab completion
+- `PsFzf` - A thin wrapper over the `fzf` utility
+- `z` - Provides directory hopping
 
 In addition, I like syntax highlighting of PowerShell to also be done such as customizing the colors of such things as keywords, comments, strings, parameters and more.  The [cmd-colors-solarized](https://github.com/neilpa/cmd-colors-solarized) repository has two files `Set-SolarizedDarkColorDefaults.ps1` and `Set-SolarizedLightColorDefaults.ps1`.  Unfortunately, with the later releases of PowerShell and Powershell Core, the defaults no longer work and instead you can use my  [`Set-SolarizedDarkColorDefaults.ps1`](Set-SolarizedDarkColorDefaults.ps1) and [`Set-SolarizedLightColorDefaults.ps1`](Set-SolarizedLightColorDefaults.ps1) files which corrects the files.
 
 There are a number of customizations I have done to my PowerShell to make it feel more like *nix, such as overriding the default `cURL` and `wget` to use the native binaries instead of `Invoke-WebRequest`, adding for utilities such as `thefuck`, and change the prompt to use [Agnoster](https://github.com/agnoster/agnoster-zsh-theme).
 
 You can find my PowerShell Profiles here:
-- [Microsoft PowerShell + PowerShell Core](Microsoft.PowerShell_profile.ps1)
-- [VSCode PowerShell](Microsoft.VSCode_profile.ps1)
+- [Microsoft PowerShell + PowerShell Core + VSCode](Microsoft.PowerShell_profile.ps1)

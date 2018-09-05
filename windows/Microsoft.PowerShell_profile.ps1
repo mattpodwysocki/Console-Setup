@@ -46,9 +46,10 @@ function Set-EnvironmentVariable($name, $value) {
 }
 Set-Alias export Set-EnvironmentVariable
 
-# PowerShell overrides
+# PowerShell overrides and other aliases
 Set-Alias -Name curl -Value curl.exe -Option AllScope
 Set-Alias -Name wget -Value wget.exe -Option AllScope
+Set-Alias -Name cat -Value bat.exe -Option AllScope
 
 # Unix Utilities
 function New-Link ($target, $link) {
@@ -99,9 +100,9 @@ Set-Theme Paradox
 $env:TF_SHELL = "powershell"
 Invoke-Expression "$(thefuck --alias)"
 
-# Install AzureRM
-if ($PSVersionTable.PSEdition -eq "Core") {
-    Import-Module AzureRm.Netcore
-} else {
-    Import-Module AzureRm
-}
+# Fix and import z
+if (-not $global:options['CustomArgumentCompleters']) { $global:options = @{CustomArgumentCompleters = @{}} }
+Import-Module z
+
+# Enable fzf
+Import-Module PSFzf
