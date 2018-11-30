@@ -59,7 +59,7 @@ function Set-Preview {
 Set-Alias -Name preview -Value Set-Preview -Option AllScope
 
 # Z
-$global:options['CustomArgumentCompleters']['z:JumpPath']
+if (-not $global:options['CustomArgumentCompleters']) { $global:options = @{CustomArgumentCompleters = @{}} }
 Import-Module z
 
 function New-Link ($target, $link) {
