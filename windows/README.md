@@ -26,6 +26,7 @@ An essential to a productive development environment is a package manager. Just 
 - git
 - git-lfs
 - p4merge
+- sublime merge
 
 ### System Utilities installed via Scoop Globally
 - bat
@@ -41,6 +42,7 @@ An essential to a productive development environment is a package manager. Just 
 - ripgrep
 - sed
 - sudo
+- time
 - touch
 - wget
 - which
@@ -83,12 +85,50 @@ By default, I install a number of modules from the PowerShell Gallery including:
 - `Get-ChildItemColor` - A colorized version of `Get-ChildItem` cmdlet
 - `oh-my-posh` - Theming capabilities for the console
 - `posh-git` - Provides git status and git tab completion
-- `PsFzf` - A thin wrapper over the `fzf` utility
-- `z` - Provides directory hopping
 
 In addition, I like syntax highlighting of PowerShell to also be done such as customizing the colors of such things as keywords, comments, strings, parameters and more.  The [cmd-colors-solarized](https://github.com/neilpa/cmd-colors-solarized) repository has two files `Set-SolarizedDarkColorDefaults.ps1` and `Set-SolarizedLightColorDefaults.ps1`.  Unfortunately, with the later releases of PowerShell and Powershell Core, the defaults no longer work and instead you can use my  [`Set-SolarizedDarkColorDefaults.ps1`](Set-SolarizedDarkColorDefaults.ps1) and [`Set-SolarizedLightColorDefaults.ps1`](Set-SolarizedLightColorDefaults.ps1) files which corrects the files.
 
-There are a number of customizations I have done to my PowerShell to make it feel more like *nix, such as overriding the default `cURL` and `wget` to use the native binaries instead of `Invoke-WebRequest`, adding for utilities such as `thefuck`, and change the prompt to use [Agnoster](https://github.com/agnoster/agnoster-zsh-theme).
+There are a number of customizations I have done to my PowerShell to make it feel more like *nix, such as overriding the default `cURL` and `wget` to use the native binaries instead of `Invoke-WebRequest`, adding for utilities such as `thefuck`, `bat`, and change the prompt to use [Agnoster](https://github.com/agnoster/agnoster-zsh-theme).
+
+```powershell
+# PowerShell overrides and other aliases
+Set-Alias -Name curl -Value curl.exe -Option AllScope
+Set-Alias -Name wget -Value wget.exe -Option AllScope
+Set-Alias -Name cat -Value bat.exe -Option AllScope
+Set-Alias -Name pgrep -Value Get-Process -Option AllScope
+
+# FZF
+function Set-Preview {
+    fzf.exe --preview 'bat --color \"always\" {}'
+}
+Set-Alias -Name preview -Value Set-Preview -Option AllScope
+
+# Ensure posh-git is loaded
+Import-Module -Name posh-git
+
+# Ensure oh-my-posh is loaded
+Import-Module -Name oh-my-posh
+
+# Default the prompt to agnoster oh-my-posh theme
+Set-Theme Agnoster
+
+# Install thefuck
+$env:TF_SHELL = "powershell"
+Invoke-Expression "$(thefuck --alias)"
+```
+
+In addition, there are a number of keyboard shortcuts I like to use using the `PSReadLine` module.  This allows us to create pretty rich interactions with the console. For examples on usage, check out the [`PSReadline` Usage](https://github.com/lzybkr/PSReadLine#usage).  For now we're just interested in a better history and Emacs mode.
+```powershell
+# Customize PSReadLine
+Import-Module PSReadLine
+Set-PSReadLineOption -EditMode Emacs
+# History
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+# Bash-like completion
+Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete
+```
 
 You can find my PowerShell Profiles here:
 - [Microsoft PowerShell + PowerShell Core + VSCode](Microsoft.PowerShell_profile.ps1)

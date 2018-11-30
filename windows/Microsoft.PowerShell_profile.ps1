@@ -35,7 +35,7 @@ function Edit-Profile { code-insiders $PROFILE }
 Set-Alias ep Edit-Profile
 
 # Update PS Profile for current session
-function Update-Profile { & $PROFILE }
+function Update-Profile { . $PROFILE }
 Set-Alias up Update-Profile
 
 function Open-Explorer($path = $pwd) { explorer.exe $path }
@@ -50,15 +50,18 @@ Set-Alias export Set-EnvironmentVariable
 Set-Alias -Name curl -Value curl.exe -Option AllScope
 Set-Alias -Name wget -Value wget.exe -Option AllScope
 Set-Alias -Name cat -Value bat.exe -Option AllScope
+Set-Alias -Name pgrep -Value Get-Process -Option AllScope
 
-# Unix Utilities
+# FZF
+function Set-Preview {
+    fzf.exe --preview 'bat --color \"always\" {}'
+}
+Set-Alias -Name preview -Value Set-Preview -Option AllScope
+
 function New-Link ($target, $link) {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 Set-Alias ln New-Link
-
-# pgrep
-Set-Alias pgrep Get-Process
 
 # kill process
 function pkill($name) {
@@ -84,7 +87,14 @@ function Set-VisualStudio {
 }
 Set-Alias vs Set-VisualStudio
 
-# Show all options
+# Customize PSReadLine
+Import-Module PSReadLine
+Set-PSReadLineOption -EditMode Emacs
+# History
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+# Bash-like completion
 Set-PSReadlineKeyHandler -Chord Tab -Function MenuComplete
 
 # Ensure posh-git is loaded
@@ -94,15 +104,8 @@ Import-Module -Name posh-git
 Import-Module -Name oh-my-posh
 
 # Default the prompt to agnoster oh-my-posh theme
-Set-Theme Paradox
+Set-Theme Agnoster
 
 # Install thefuck
 $env:TF_SHELL = "powershell"
 Invoke-Expression "$(thefuck --alias)"
-
-# Fix and import z
-if (-not $global:options['CustomArgumentCompleters']) { $global:options = @{CustomArgumentCompleters = @{}} }
-Import-Module z
-
-# Enable fzf
-Import-Module PSFzf
