@@ -58,6 +58,10 @@ function Set-Preview {
 }
 Set-Alias -Name preview -Value Set-Preview -Option AllScope
 
+# Z
+$global:options['CustomArgumentCompleters']['z:JumpPath']
+Import-Module z
+
 function New-Link ($target, $link) {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
