@@ -17,7 +17,10 @@ When dealing with the console, I like like rich interactions such as ones provid
 
 ## Platforms
 
-I have specific setups for each environment
+I have specific setups for each environment:
+- [Linux](linux/readme.md)
+- [macOS](macos/readme.md)
+- [Windows](windows/readme.md)
 
 ## LICENSE
 
