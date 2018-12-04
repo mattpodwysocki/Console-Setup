@@ -15,6 +15,35 @@ When dealing with the console, I like like rich interactions such as ones provid
 
 ## Visual Studio Code Configuration
 
+I use [Visual Studio Code](https://code.visualstudio.com/) pretty much for everything nowadays. It has support for pretty much every programming language and platform.  These are the extensions that I use per category.  For my color theme, I use `Solarized Dark`, and for fonts, I use `Fira Code for Powerline` for both the text editor and the console.  And if you're like me, and like living on the edge, try [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) for daily updates!
+
+### Languages
+- C/C++
+- C#
+- Go
+- Java - RedHat
+- PowerShell
+- Python
+- Ruby
+- Rust (rls)
+
+### Debuggers
+- Debugger for Chrome
+- Debugger for Java
+
+### Editor Support
+- EditorConfig
+- VS Live Share
+- VSCode-Icons
+- YAML Support by RedHat
+
+### Source Control
+- GitLens
+
+### Containers
+- Docker
+- Kubernetes
+
 ## Platforms
 
 I have specific setups for each environment:
