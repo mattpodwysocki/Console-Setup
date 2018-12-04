@@ -1,0 +1,36 @@
+ssh: {}
+hotkeys:
+  shell: {}
+terminal:
+  copyOnSelect: true
+  environment: {}
+  shell: cmd
+  colorScheme:
+    name: Solarized Dark - Patched
+    foreground: '#708284'
+    background: '#001e27'
+    cursor: '#708284'
+    colors:
+      - '#002831'
+      - '#d11c24'
+      - '#738a05'
+      - '#a57706'
+      - '#2176c7'
+      - '#c61c6f'
+      - '#259286'
+      - '#eae3cb'
+      - '#475b62'
+      - '#bd3613'
+      - '#475b62'
+      - '#536870'
+      - '#708284'
+      - '#5956ba'
+      - '#819090'
+      - '#fcf4dc'
+  font: Fira Mono for Powerline
+appearance:
+  vibrancy: false
+  opacity: 1
+  theme: Altair
+titleControl: {}
+enableAnalytics: false

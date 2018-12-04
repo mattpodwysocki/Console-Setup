@@ -49,7 +49,7 @@ An essential to a productive development environment is a package manager. Just 
 
 ## Shell Configuration
 
-The shell has been the biggest areas of customization.  Unfortunately, over the years, the Windows console has been neglected, which has given growth to such alternative consoles as [ConEmu](https://conemu.github.io/), [Cmder](https://github.com/cmderdev/cmder), [ConsoleZ](https://github.com/cbucher/console), and [Hyper](https://hyper.is/).  Luckily, with Windows 10, that has been changing with many console improvements which can be followed on the [Microsoft Command-Line Tools for Developers Blog](https://blogs.msdn.microsoft.com/commandline/).
+The shell has been the biggest areas of customization.  Unfortunately, over the years, the Windows console has been neglected, which has given growth to such alternative consoles as [ConEmu](https://conemu.github.io/), [Cmder](https://github.com/cmderdev/cmder), [ConsoleZ](https://github.com/cbucher/console), [Hyper](https://hyper.is/), and my new favorite [Terminus](https://eugeny.github.io/terminus/) which like Hyper, is cross platform!  Luckily, with Windows 10, that has been changing with many console improvements which can be followed on the [Microsoft Command-Line Tools for Developers Blog](https://blogs.msdn.microsoft.com/commandline/).
 
 ### CMD.exe Configuration
 
@@ -60,6 +60,10 @@ C:\Tools\ColorTool> ColorTool.exe -b solarized_dark
 ```
 
 I prefer Powerline fonts for the console, in particular Menlo for Powerline, so that I get a decent experience.  To set this, go to the properties window of the console, go to font and select Menlo for Powerline.
+
+### Terminus Configuration
+
+The [Terminus](https://eugeny.github.io/terminus/) console is a new entry in the crowded field of terminals, but this is cross platform from day one with lots of customizations. There are a number of built-in packages as well you can take advantage of such as clickable links, quick commands, and more, all stored as NPM modules.  I have included my [`terminus-settings.yaml`](terminus-settings.yaml) file with all my customizations such as fonts, colors and key mappings..
 
 ### Cmder Configuration
 
