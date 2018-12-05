@@ -44,6 +44,11 @@ I use [Visual Studio Code](https://code.visualstudio.com/) pretty much for every
 - Docker
 - Kubernetes
 
+### Cloud Platforms
+- [AWS Toolkit for VSCode](https://github.com/aws/aws-toolkit-vscode)
+- Azure Account
+- Azure CLI Tools
+
 ## Platforms
 
 I have specific setups for each environment:
