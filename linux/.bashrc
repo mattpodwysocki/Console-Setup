@@ -1,19 +1,30 @@
+# Path to the bash it configuration
+export BASH_IT="/home/matthewp/.bash_it"
 
-export ZSH="/home/matthewp/.oh-my-zsh"
+# Lock and Load a custom theme file.
+# Leave empty to disable theming.
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
 
-ZSH_THEME="agnoster"
+# Don't check mail when opening terminal.
+unset MAILCHECK
 
-plugins=(
-  git
-  ubuntu
-)
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
 
-source $ZSH/oh-my-zsh.sh
+# Set this to the command you use for todo.txt-cli
+export TODO="t"
+
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
+
+# Load Bash It
+source "$BASH_IT"/bash_it.sh
 
 export EDITOR="code-insiders"
 
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f /home/linuxbrew/.linuxbrew/etc/profile.d/z.sh ] && . /home/linuxbrew/.linuxbrew/etc/profile.d/z.sh
 [ -f /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh ] && . /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh
 
@@ -27,17 +38,17 @@ export PATH=$PATH:$HOME/.deno/bin
 export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 
 # OPAM configuration
-. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. /home/matthewp/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Because we all have bad days
 eval $(thefuck --alias)
 
-alias sourceconfig="source ~/.zshrc"
-alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias sourceconfig="source ~/.bashrc"
+alias bashconfig="$EDITOR ~/.bashrc"
 alias cat="bat"
 alias help="tldr"
 alias nuget="mono /usr/local/bin/nuget.exe"
@@ -47,9 +58,6 @@ alias top="sudo htop"
 
 # add support for ctrl+o to open selected file in VS Code Insiders
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code-insiders {})+abort'"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
