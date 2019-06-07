@@ -59,3 +59,8 @@ Set-Theme Agnoster
 # Install thefuck
 $env:TF_SHELL = "powershell"
 Invoke-Expression "$(thefuck --alias)"
+
+# General aliases
+Set-Alias cat bat
+function ping { & prettyping --nolegend $args }
+function top { & sudo htop $args } 

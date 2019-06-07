@@ -9,6 +9,7 @@ Across all machines, I tend to like the same colors for my text editor of choice
 ## Fonts
 
 When dealing with the console, I like like rich interactions such as ones provided by [Powerline](https://github.com/powerline/powerline).  Regardless of the system, I install the patched fonts:
+
 - [Powerline Patched Fonts](https://github.com/powerline/fonts)
 - [Menlo for Powerline](https://github.com/abertsch/Menlo-for-Powerline)
 

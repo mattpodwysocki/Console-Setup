@@ -1,21 +1,20 @@
-# Path to your oh-my-zsh installation.
+export PATH="/usr/local/sbin:$PATH"
+
 export ZSH="/Users/matthewp/.oh-my-zsh"
 
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
 
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
   git
   osx
+  vscode
+  sudo
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
-export EDITOR="code-insiders"
+export EDITOR='code-insiders'
 
 # ZSH completions
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -26,38 +25,40 @@ if brew command command-not-found-init > /dev/null 2>&1; then eval "$(brew comma
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f /usr/local/etc/profile.d/z.sh ] && . /usr/local/etc/profile.d/z.sh
+eval "$(thefuck --alias)"
 
+# GO Development
+export GOROOT=$(brew --prefix golang)/libexec
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+
+export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:$HOME/.cargo/bin
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$HOME/.fastlane/bin
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-export PATH=$PATH:$HOME/.deno/bin
+export PATH=$PATH:$HOME/.fluttersdk/bin
 
-export JAVA_HOME="$(/usr/libexec/java_home)"
+#export JAVA_HOME="$(/usr/libexec/java_home)"
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"
 export ANDROID_HOME=/Users/matthewp/Library/Android/sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export ANDROID_AVD_HOME=/Users/matthewp/.android/avd
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# opam configuration
+test -r /Users/matthewp/.opam/opam-init/init.zsh && . /Users/matthewp/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # Adds NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Because we all have bad days
-eval "$(thefuck --alias)"
-
 # Aliases
-alias zshconfig="code-insiders ~/.zshrc"
-alias ohmyzsh="code-insiders ~/.oh-my-zsh"
-alias sourcezsh="source ~/.zshrc"
-alias cat="bat"
-alias help="tldr"
-alias ping="prettyping --nolegend"
-alias powershell="pwsh" # Aliasing just because
-alias preview="fzf --preview 'bat --color \"always\" {}'"
-alias top="sudo htop" # alias top and fix high sierra bug
+alias zshconfig='$EDITOR~/.zshrc'
+alias ohmyzsh='$EDITOR ~/.oh-my-zsh'
+alias sourcezsh='source ~/.zshrc'
+[ -f ~/.aliases ] && source ~/.aliases
 
 # add support for ctrl+o to open selected file in VS Code Insiders
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code-insiders {})+abort'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute($EDITOR {})+abort'"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

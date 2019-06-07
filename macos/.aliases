@@ -1,0 +1,20 @@
+# Common aliases
+alias cat="bat"
+alias diff="colordiff"
+alias dir="ls -lA"
+alias grep="grep --color=always"
+alias help="tldr"
+alias less="less -R"
+alias ls="ls -G"
+alias ll="ls -lG"
+alias ping="prettyping --nolegend"
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias top="sudo htop"
+alias vs="open -n '/Applications/Visual Studio.app'"
+
+# cd shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
